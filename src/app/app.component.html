@@ -1,0 +1,33 @@
+<div class="topnav">
+  <p>Spesa</p>
+  <img
+    (click)="openCart()"
+    src="https://icons.iconarchive.com/icons/iconsmind/outline/256/Shopping-Cart-icon.png"
+    width="30px"
+  />
+  <div class="cart" [ngClass]="{open : this.isCartOpen}">
+    <button class="closeBtn" (click)="closeCart()">&times;</button>
+    <p>Totale {{this.cartTotal}} €</p>
+    <div *ngFor="let item of cartItem; index">
+      <p class="truncate">
+        {{item.title}} <span class="removeBtn">rimuovi</span>
+      </p>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div *ngFor="let item of list" class="col-4">
+      <div class="item">
+        <img src="{{item.image}}" />
+        <p>{{item.title}}</p>
+        Prezzo {{item.price}} €
+        <div>
+          <button class="btn btn-primary" (click)="addItemToCart(item)">
+            Acquista
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
